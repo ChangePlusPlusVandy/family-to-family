@@ -1,14 +1,14 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { AuthProvider } from "./AuthContext";
-import PrivateRoute from "./components/PrivateRoute";
+import PrivateRoute from "../components/PrivateRoute";
 
 // Routes
-import Home from "./components/Home";
-import Login from "./components/Auth/Login";
-import Register from "./components/Auth/Register";
-import Profile from "./components/Auth/Profile";
-import ForgotPassword from "./components/Auth/ForgotPassword";
+import Home from "../pages/Home";
+import Login from "../components/Auth/Login";
+import Register from "../components/Auth/Register";
+import Profile from "../components/Auth/Profile";
+import ForgotPassword from "../components/Auth/ForgotPassword";
 
 const Router = () => {
   // use PrivateRoute for protected routes

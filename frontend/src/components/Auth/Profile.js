@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { useAuth } from "../../AuthContext";
+import { useAuth } from "../../lib/AuthContext";
 
 const Profile = () => {
   const { logout, getUser } = useAuth();
