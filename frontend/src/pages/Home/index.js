@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../lib/AuthContext";
+import { useAuth } from "../../lib/AuthContext";
 
 const Home = () => {
   const [fact, setFact] = useState("");
