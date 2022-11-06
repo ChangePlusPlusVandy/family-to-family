@@ -8,13 +8,13 @@ const Register = () => {
   const history = useHistory();
 
   const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [lastName, setlastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [district, setDistrict] = useState("");
-  const [zipCode, setZipCode] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [district, setDistrict] = useState(0);
+  const [zipCode, setZipCode] = useState(0);
+  const [phoneNumber, setPhoneNumber] = useState(0);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -27,20 +27,16 @@ const Register = () => {
     }
     try {
       setIsLoading(true);
-      await register(email, password);
+      await register(username, email, password);
       history.push("/");
     } catch (error) {
       setError(error.message);
     }
     setIsLoading(false);
     const user = {
+      username: username,
       email: email,
-      password: password,
-      firstname: firstName,
-      lastname: lastName,
-      schooldistrict: district,
-      zipcode: zipCode,
-      phonenumber: phoneNumber
+      password: password
     }
     console.log(user);
     axios.post('http://localhost:3001/users/add', user)
@@ -100,8 +96,8 @@ const Register = () => {
         <div>
           <label htmlFor="name">School District</label>
           <input
-            type="text"
-            id="name"
+            type="password"
+            id="passwordConfirm"
             value={district}
             onChange={(e) => setDistrict(e.target.value)}
           />
@@ -109,8 +105,8 @@ const Register = () => {
         <div>
           <label htmlFor="name">Zip Code</label>
           <input
-            type="text"
-            id="name"
+            type="password"
+            id="passwordConfirm"
             value={zipCode}
             onChange={(e) => setZipCode(e.target.value)}
           />
@@ -118,10 +114,10 @@ const Register = () => {
         <div>
           <label htmlFor="name">Phone Number</label>
           <input
-            type="text"
-            id="name"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            type="password"
+            id="passwordConfirm"
+            value={passwordConfirm}
+            onChange={(e) => setPasswordConfirm(e.target.value)}
           />
         </div>
         <button type="submit" disabled={isLoading}>

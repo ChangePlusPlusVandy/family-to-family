@@ -12,9 +12,9 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [district, setDistrict] = useState("");
-  const [zipCode, setZipCode] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [district, setDistrict] = useState(0);
+  const [zipCode, setZipCode] = useState(0);
+  const [phoneNumber, setPhoneNumber] = useState(0);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 

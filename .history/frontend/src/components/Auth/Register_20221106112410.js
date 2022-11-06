@@ -8,13 +8,13 @@ const Register = () => {
   const history = useHistory();
 
   const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [lastName, setlastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [district, setDistrict] = useState("");
-  const [zipCode, setZipCode] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [district, setDistrict] = useState(0);
+  const [zipCode, setZipCode] = useState(0);
+  const [phoneNumber, setPhoneNumber] = useState(0);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -27,20 +27,16 @@ const Register = () => {
     }
     try {
       setIsLoading(true);
-      await register(email, password);
+      await register(username, email, password);
       history.push("/");
     } catch (error) {
       setError(error.message);
     }
     setIsLoading(false);
     const user = {
+      username: username,
       email: email,
-      password: password,
-      firstname: firstName,
-      lastname: lastName,
-      schooldistrict: district,
-      zipcode: zipCode,
-      phonenumber: phoneNumber
+      password: password
     }
     console.log(user);
     axios.post('http://localhost:3001/users/add', user)
