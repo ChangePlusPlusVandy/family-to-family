@@ -6,7 +6,7 @@ const VerifyToken = require("./middlewares/VerifyToken");
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use(cors()); // Allow cross-origin requests (for frontend to communicate with backend on different ports/address)
 app.use(express.json()); // Parses incoming JSON requests and uts the parsed data in req

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../AuthContext";
+import { useAuth } from "../../lib/AuthContext";
 
 const Home = () => {
   const [fact, setFact] = useState("");
@@ -23,7 +23,7 @@ const Home = () => {
           },
         };
 
-        const res = await fetch("http://localhost:3001/data", payloadHeader);
+        const res = await fetch("http://localhost:8080/data", payloadHeader);
         setFact(await res.text());
       } catch (err) {
         console.log(err);

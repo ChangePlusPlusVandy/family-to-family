@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../../AuthContext";
+import { useAuth } from "../../lib/AuthContext";
 
 const Register = () => {
   const { register } = useAuth();
