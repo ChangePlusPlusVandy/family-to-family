@@ -1,12 +1,7 @@
-import { BrowserRouter } from "react-router-dom";
-import Router from "./Router";
+import UserProfile from "./pages/UserProfile";
 
 const App = () => {
-  return (
-    <BrowserRouter>
-      <Router />
-    </BrowserRouter>
-  );
+  return <UserProfile />;
 };
 
 export default App;
