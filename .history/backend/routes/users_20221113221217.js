@@ -53,26 +53,15 @@ router.delete('/:id', async(req, res)=> {
     }
 });
 
-router.patch('/edit/:id', async(req, res)=> {
+router.patch('/:id', async(req, res)=> {
     try{
-        const updatedUser = await User.updateOne({_id: req.params.id}, 
-            {$set: {
-                email: req.body.email,
-                password: req.body.password,
-                firstname: req.body.firstname,
-                lastname: req.body.lastname,
-                schooldistrict: req.body.schooldistrict,
-                zipcode: req.body.zipcode,
-                phonenumber: req.body.phonenumber
-            }}
-        );
+        const updatedUser = await User.updateOne({_id: req.params.id}, {$email: {email: req.body.email}});
         res.json(updatedUser);
     }
     catch(err){
         res.json({message: err});
     }
 });
-
 
 
 module.exports = router;
