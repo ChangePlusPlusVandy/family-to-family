@@ -1,6 +1,8 @@
 import { useHistory } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../lib/AuthContext";
+import { Link } from "react-router-dom";
+import styles from "./index.module.css";
 
 const Profile = () => {
   const { logout, getUser } = useAuth();
@@ -36,6 +38,17 @@ const Profile = () => {
             <strong>Email:</strong> {user.email}
           </p>
           <button onClick={handleLogout}>Logout</button>
+          <div>
+            <div className={styles.tab_div}>
+              <Link to="/">
+                <button className={styles.button}>Home</button>
+              </Link>
+              <Link to="/modules">
+                <button className={styles.button}>Modules</button>
+              </Link>
+              <button className={styles.button}>Profile</button>
+            </div>
+          </div>
         </div>
       )}
     </div>

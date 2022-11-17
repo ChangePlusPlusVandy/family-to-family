@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../lib/AuthContext";
+import styles from "./index.module.css";
 
 const Home = () => {
   const [fact, setFact] = useState("");
@@ -9,7 +10,7 @@ const Home = () => {
   // for the request to our backend API. I suggest using ReactQuery. The normal fetch() method is
   // amazing, but it gets tedious when dealing with caching, retries, and so on. ReactQuery takes
   // care of that for us.
-  
+
   useEffect(() => {
     const fetchFact = async () => {
       console.log("called");
@@ -35,11 +36,18 @@ const Home = () => {
 
   return (
     <div>
-      This is a React Firebase Auth template. Below is a fact from a protected route on the server.
-
-      <p>{fact}</p>
-      <br />
-      <Link to="/profile">Profile</Link>
+      <p>
+        This is the home page.
+      </p>
+      <div className = {styles.tab_div}>
+          <button className = {styles.button}>Home</button>
+          <Link to="/Modules">
+              <button className = {styles.button}>Modules</button>
+          </Link>
+          <Link to="/profile">   
+              <button className = {styles.button}>Profile</button>
+          </Link>
+      </div>
     </div>
   );
 };
