@@ -1,7 +1,12 @@
 import UserProfile from "./pages/UserProfile";
 
 const App = () => {
-  return <UserProfile />;
+  return (
+    // <BrowserRouter>
+    //   <Router />
+    // </BrowserRouter>
+    <UserProfile />
+  );
 };
 
 export default App;
