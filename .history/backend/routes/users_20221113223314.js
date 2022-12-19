@@ -6,8 +6,8 @@ const User = require('../models/user.model');
 
 router.get('/', async (req, res)=> {
     try{
-        const users = await User.find({});
-        return res.json(users);
+        const users = await User.findById();
+        res.json(users);
     }
     catch(err){
         res.status(400).json({message: err});
@@ -37,7 +37,6 @@ router.post('/add', async(req, res)=> {
     try{
         const savedUser=await user.save();
         res.json(savedUser);
-        res.send(res.status(200).json(savedUser));
     }
     catch(err){
         res.json({message: err});
@@ -73,6 +72,7 @@ router.patch('/edit/:id', async(req, res)=> {
         res.json({message: err});
     }
 });
+
 
 
 module.exports = router;

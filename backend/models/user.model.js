@@ -35,7 +35,6 @@ const userSchema= mongoose.Schema({
         type: Number,
         required: true,
         trim: true,
-        minLength: 10
     }
 }, {
     timestamps: true,

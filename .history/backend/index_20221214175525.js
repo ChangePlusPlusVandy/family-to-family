@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGO_URI, () => {
 app.use("/data", VerifyToken, require("./routes/users"));
 
 app.get("/", (req, res) => { // Default route: Unprotected
-    res.send("Express Auth Temp!!");
+    res.send("Express Auth Temp!");
 });
 
 const usersRouter= require('./routes/users');

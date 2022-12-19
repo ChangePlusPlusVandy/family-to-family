@@ -14,7 +14,7 @@ app.use(express.json()); // Parses incoming JSON requests and uts the parsed dat
 app.use(express.urlencoded({ extended: true })); // Parses incoming requests with urlenconded payloads
 
 mongoose.connect(process.env.MONGO_URI, () => {
-    console.log("connected to DB")
+    console.log("connected to DB!")
 });
 /**
  * Uses the VerifyToken middleware to protect the data route
