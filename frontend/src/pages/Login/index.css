@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: "Poppins";
+}
+
+.content {
+  height: 100vh;
+  width: 100vw;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+
+.logo {
+  padding-top: 20%;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.title {
+  font-size: 3.5vh;
+  font: bolder;
+  margin-bottom: 0;
+}
+
+.description {
+  color: rgb(129, 129, 129);
+  font-size: 1.8vh;
+  margin-top: 1%;
+}
+
+.loginForm {
+  margin-top: 5%;
+  width: 100%;
+}
+
+.loginForm > p {
+  font-size: 1.8vh;
+  color: rgb(129, 129, 129);
+  margin: 10px 0 0 0;
+}
+
+.loginForm > input[type="text"] {
+  background-color: rgb(234, 239, 241);
+  width: 100%;
+  height: 4vh;
+  margin: 0;
+  border-radius: 15px;
+  border-width: 0;
+  font-family: "Poppins";
+  font-size: 2vh;
+  padding: 10px;
+}
+
+.loginForm > input[type="password"] {
+  background-color: rgb(234, 239, 241);
+  width: 100%;
+  height: 4vh;
+  margin: 0;
+  border-radius: 15px;
+  border-width: 0;
+  font-family: "Poppins";
+  font-size: 2vh;
+  padding: 10px;
+}
+
+.form-extras {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.form-extras > input[type="checkbox"] {
+  border-radius: 17.5px;
+  height: 30px;
+  width: 30px;
+  background-color: rgb(234, 239, 241);
+  margin-right: 10px;
+}
+
+.form-extras > label {
+  margin-left: 5px;
+  margin-right: auto;
+  font-size: 1.5vh;
+}
+
+.form-extras > p {
+  font-size: 1.5vh;
+}
+
+.loginForm > input[type="submit"] {
+  width: 100%;
+  height: 6vh;
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  border-width: 0;
+  border-radius: 20px;
+  background-color: rgb(2, 152, 186);
+  padding: 0;
+}
+
+.signup {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 2vh;
+}
+
+.signup-desc {
+  color: rgb(129, 129, 129);
+  margin-right: 30px;
+}
+
+.link-signup {
+  color: rgb(2, 152, 186);
+  font-weight: bolder;
+}

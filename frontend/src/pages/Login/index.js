@@ -69,21 +69,26 @@ import "./index.css";
 
 export default function Login() {
   return (
-    <div>
-      <img src={logo} />
+    <div className="content">
+      <img src={logo} className="logo" alt="" />
       <h1 className="title">Login</h1>
       <p className="description">Please sign in to continue</p>
-      <form>
+      <form className="loginForm">
         <p>Email</p>
         <input type="text" placeholder="" />
         <p>Password</p>
-        <input type="text" placeholder="" />
-        <input type="checkbox" />
-        <p>Forgot Password?</p>
-        <div className="submitButton">
-          <p>Log In</p>
+        <input type="password" placeholder="" />
+        <div className="form-extras">
+          <input type="checkbox" id="rem" />
+          <label htmlFor="rem">Remember Me</label>
+          <p>Forgot Password?</p>
         </div>
+        <input type="submit" value="Log in"></input>
       </form>
+      <div className="signup">
+        <p className="signup=desc">Don't have an account?&nbsp;</p>
+        <p className="link-signup">Sign up</p>
+      </div>
     </div>
   );
 }
