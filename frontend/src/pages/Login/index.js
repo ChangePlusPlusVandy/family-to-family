@@ -63,31 +63,78 @@
 
 // export default Login;
 
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
 import logo from "./F2F-logo.png";
 import "./index.css";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    const textFile = new File(
+      [`username: ${email}\npassword: ${password}`],
+      "login.txt",
+      { type: "text/plain" }
+    );
+
+    // Send a request to the backend with the username and password
+    fetch("/login", {
+      method: "POST",
+      body: textFile,
+    }).then((response) => {
+      // Handle the response from the backend
+    });
+    setIsLoading(false);
+  };
+
   return (
     <div className="content">
-      <img src={logo} className="logo" alt="" />
+      <div className="image">
+        <img src={logo} className="logo" alt="" />
+      </div>
       <h1 className="title">Login</h1>
       <p className="description">Please sign in to continue</p>
       <form className="loginForm">
         <p>Email</p>
-        <input type="text" placeholder="" />
+        <input
+          type="text"
+          placeholder=""
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
         <p>Password</p>
-        <input type="password" placeholder="" />
+        <input
+          type="password"
+          placeholder=""
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <div className="form-extras">
           <input type="checkbox" id="rem" />
           <label htmlFor="rem">Remember Me</label>
-          <p>Forgot Password?</p>
+          <p>
+            <Link to="/forgot-password">Forgot Password</Link>?
+          </p>
         </div>
-        <input type="submit" value="Log in"></input>
+        <input
+          disabled={isLoading}
+          type="submit"
+          onClick={handleSubmit}
+          value="Log in"></input>
       </form>
       <div className="signup">
         <p className="signup=desc">Don't have an account?&nbsp;</p>
-        <p className="link-signup">Sign up</p>
+        <p className="link-signup">
+          <Link to="/home">Sign up</Link>
+        </p>
       </div>
     </div>
   );
