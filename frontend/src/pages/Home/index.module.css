@@ -1,19 +1,56 @@
-.button {
-    background-color: #3c517a;
-    color: white;
-    font-family: Arial;
+.text_div {
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
-    cursor: pointer;
-    width: 33.3%;
-    height: 30px;
+    position: relative;
 }
-.tab_div {
-    position: fixed;
-    padding: 10px 24px; /* Some padding */
-    float: left; /* Float the buttons side by side */
-    width: 95%;
-    height: 30px;
-    bottom: 10px;
+.text_div.first {
+    margin-top: 10vw;
+}
+.text_div.second {
+    margin-top: 3vw;
+}
+.welcome {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-size: 8vw;
+    margin: auto;
+    display:inline-block;
+    color: #A8A8A8;
 }
 
+.welcome.family {
+    color: black;
+    font-weight: 600;
+}
+
+.cruising {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-size: 5vw;
+    margin: auto;
+    display:inline-block;
+    color: #A8A8A8;
+}
+
+.cruising.color {
+    color: #E3D150;
+    font-weight: 600;
+}
+
+.points {
+    font-family: 'Poppins';
+    font-weight: 800;
+    font-size: 4.2vw;
+    margin: auto;
+    display: inline-block;
+    color: #000000;
+}
+
+.points.text {
+    font-weight: 600;
+    color: #818181;
+}
+
+/* need to fix font later */
 /*Not set to percentage*/
