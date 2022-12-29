@@ -23,6 +23,7 @@ const Login = () => {
     setIsLoading(false);
   };
 
+
   return (
     <div>
       <h1>Welcome to the React Firebase Auth template project</h1>
