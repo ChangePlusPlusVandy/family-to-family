@@ -65,9 +65,11 @@
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import classNames from "classnames/bind";
+import logo from "../../images/F2F-logo.png";
+import styles from "./index.module.css";
 
-import logo from "./F2F-logo.png";
-import "./index.css";
+const cx = classNames.bind(styles);
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -95,33 +97,41 @@ export default function Login() {
     setIsLoading(false);
   };
 
+  // setError("Invalid Password");
+
   return (
-    <div className="content">
-      <div className="image">
-        <img src={logo} className="logo" alt="" />
+    <div className={cx(styles.content)}>
+      <div className={cx(styles.image)}>
+        <img src={logo} className={cx(styles.image, "logo")} alt="" />
       </div>
-      <h1 className="title">Login</h1>
-      <p className="description">Please sign in to continue</p>
-      <form className="loginForm">
-        <p>Email</p>
+      <div className={cx(styles.header)}>
+        <h1 className={cx(styles.header, "title")}>Login</h1>
+        <p className={cx(styles.header, "description")}>
+          Please sign in to continue
+        </p>
+      </div>
+      <form className={cx(styles.login_form)}>
+        <label htmlFor="email">Email</label>
         <input
-          type="text"
+          type="email"
+          id="email"
           placeholder=""
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <p>Password</p>
+        <label htmlFor="password">Password</label>
         <input
           type="password"
+          id="password"
           placeholder=""
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <div className="form-extras">
+        <div className={cx(styles.form_extras)}>
           <input type="checkbox" id="rem" />
           <label htmlFor="rem">Remember Me</label>
           <p>
-            <Link to="/forgot-password">Forgot Password</Link>?
+            <Link to="/forgot-password">Forgot Password</Link>
           </p>
         </div>
         <input
@@ -130,10 +140,10 @@ export default function Login() {
           onClick={handleSubmit}
           value="Log in"></input>
       </form>
-      <div className="signup">
+      <div className={cx(styles.signup)}>
         <p className="signup=desc">Don't have an account?&nbsp;</p>
         <p className="link-signup">
-          <Link to="/home">Sign up</Link>
+          <Link to="/register">Sign up</Link>
         </p>
       </div>
     </div>
