@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import Router from "./Router";
-import Loader from "./components/Loader";
+import Loader from "./pages/LoadScreen/Loader";
 
 const App = () => {
   const [loading, setLoading] = useState(false);
