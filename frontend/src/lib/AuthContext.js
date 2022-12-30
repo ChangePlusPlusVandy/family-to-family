@@ -14,7 +14,7 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
 
   // Initially set to true. When Firebase finishes authentication and updates
-  //  the user, it's set to false. This will prevent the children components 
+  //  the user, it's set to false. This will prevent the children components
   // from rendering while the action is taking place.
   const [isLoading, setIsLoading] = useState(true);
 
