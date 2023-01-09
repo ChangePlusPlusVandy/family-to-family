@@ -23,11 +23,14 @@ export const NavBar = () => {
             [styles.mobile]: isMobile
         })}
     >
-        <div
+        <div className={cx(styles.navBar)}>
+        
+        {/* <div
         className={cx(styles.navBar, {
             [styles.small]: isSmall
         })}
-        >
+        > */}
+
             <div onClick={() => goTo(ROUTES.HOME)} className={cx(styles.navItem, {
                 [styles.selected]: pathname === ROUTES.HOME
             })}>
