@@ -63,8 +63,8 @@
 
 // export default Login;
 
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import classNames from "classnames/bind";
 import logo from "../../images/F2F-logo.png";
 import styles from "./index.module.css";
@@ -76,28 +76,46 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/home");
+    }
+  }, [isLoggedIn, navigate]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-
+    setError("");
     const textFile = new File(
       [`username: ${email}\npassword: ${password}`],
       "login.txt",
       { type: "text/plain" }
     );
-
-    // Send a request to the backend with the username and password
     fetch("/login", {
       method: "POST",
       body: textFile,
-    }).then((response) => {
-      // Handle the response from the backend
-    });
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(response.statusText);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.status === "success") {
+          setIsLoggedIn(true);
+        } else {
+          setIsLoggedIn(false);
+        }
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
     setIsLoading(false);
   };
-
-  // setError("Invalid Password");
 
   return (
     <div className={cx(styles.content)}>
@@ -106,9 +124,9 @@ export default function Login() {
       </div>
       <div className={cx(styles.header)}>
         <h1 className={cx(styles.header, "title")}>Login</h1>
-        <p className={cx(styles.header, "description")}>
+        <text className={cx(styles.header, "description")}>
           Please sign in to continue
-        </p>
+        </text>
       </div>
       <form className={cx(styles.login_form)}>
         <label htmlFor="email">Email</label>
@@ -119,6 +137,7 @@ export default function Login() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+
         <label htmlFor="password">Password</label>
         <input
           type="password"
@@ -127,24 +146,37 @@ export default function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+
+        {error && <div className={cx(styles.error)}>{error}</div>}
+
         <div className={cx(styles.form_extras)}>
           <input type="checkbox" id="rem" />
           <label htmlFor="rem">Remember Me</label>
-          <p>
-            <Link to="/forgot-password">Forgot Password</Link>
-          </p>
+          <text className={cx(styles.form_extras, "desc")}>
+            <Link
+              to="/forgot-password"
+              style={{ textDecoration: "none", color: "rgb(2, 152, 186)" }}>
+              <b>Forgot Password</b>
+            </Link>
+          </text>
         </div>
+
         <input
           disabled={isLoading}
           type="submit"
           onClick={handleSubmit}
-          value="Log in"></input>
+          value="Log in"
+        />
       </form>
       <div className={cx(styles.signup)}>
-        <p className="signup=desc">Don't have an account?&nbsp;</p>
-        <p className="link-signup">
-          <Link to="/register">Sign up</Link>
-        </p>
+        <text className={cx(styles.signup, "desc")}>
+          Don't have an account?&nbsp;
+          <Link
+            to="/register"
+            style={{ textDecoration: "none", color: "rgb(2, 152, 186)" }}>
+            <b>Sign up</b>
+          </Link>
+        </text>
       </div>
     </div>
   );

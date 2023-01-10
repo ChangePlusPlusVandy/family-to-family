@@ -4,7 +4,7 @@
   width: 40vw;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 3vh;
+  margin-top: 15vh;
 }
 
 .image.logo {
@@ -25,8 +25,14 @@
     max-height: auto;
     margin-left: 10%;
   }
-  .header.header.description {
+  .header.description {
     font-size: 1.5vh;
+  }
+  .form_extras {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
   }
 }
 
@@ -88,13 +94,12 @@
 .form_extras {
   display: flex;
   align-items: center;
-  margin: 0;
 }
 
 .form_extras > input[type="checkbox"] {
   border-radius: 17.5px;
-  height: 30px;
-  width: 30px;
+  height: 2vh;
+  width: 2vh;
   background-color: rgb(234, 239, 241);
   margin-right: 10px;
 }
@@ -104,12 +109,16 @@
 }
 
 .form_extras > label {
-  margin-left: 5px;
+  margin-left: 1px;
   margin-right: auto;
   font-size: 1.5vh;
 }
 
-.form_extras > p {
+.form_extras > label:hover {
+  cursor: pointer;
+}
+
+.form_extras.desc {
   font-size: 1.5vh;
 }
 
@@ -137,15 +146,15 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  font-size: 2vh;
+  font-size: 1.5vh;
+  margin-top: 0.5vh;
 }
 
 .signup.desc {
   color: rgb(129, 129, 129);
-  margin-right: 30px;
 }
 
-.signup.link {
-  color: rgb(2, 152, 186);
-  font-weight: bolder;
+.error {
+  color: red;
+  font-size: 1.6vh;
 }
