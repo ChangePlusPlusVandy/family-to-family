@@ -10,17 +10,12 @@ export const STATUS_CODE = {
 
 export const ROUTES = {
     HOME: "/home",
-    ROADMAP : "/roadmap",
-    COMMUNITY : "/community",
+    ROADMAP : "/home/roadmap",
+    COMMUNITY : "/home/community",
 }
 
 export const HOME_NAV_LABELS = {
     HOME: "Home",
     ROADMAP : "Roadmap",
     COMMUNITY : "Community"
-}
-
-export const HOME_NAV_ICONS = {
-    HOME: "/frontend/src/svg/Home.svg",
-    // ROADMAP:
 }

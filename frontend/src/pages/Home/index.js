@@ -42,7 +42,7 @@ export const Home = () => {
     fetchFact();
   }, [currentUser]);
 
-  const lastName = "Adam's";
+  const lastName = "Adams";
   const goal = 100;
   const points = 71;
   const hpList = ["Medicaid Waitlist"];
@@ -59,11 +59,11 @@ export const Home = () => {
   ));
 
   return (
-    <div style={{overflow:"scroll", overscrollBehavior: "none", height: "92vh"}}>
+    <div>
       <div className={cx(styles.text_div, "first")}>
         <text className={cx(styles.welcome)}>Welcome&nbsp;</text>
         <text className={cx(styles.welcome, "family")}>
-          {lastName} Family!
+          {" " + lastName} Family!
         </text>
       </div>
       <div className={cx(styles.text_div, "second")}>
@@ -105,6 +105,7 @@ export const Home = () => {
 export default Home;
 
 //issues:
+//what happens when todo list becomes larger than the screen
+//or family last name is too long
 //fix navbar for computer screen (looks bad on screen anyways)
 //spacing can be tweaked
-//size of text on tablets look bad

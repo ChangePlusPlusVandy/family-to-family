@@ -1,92 +1,51 @@
-import styles from "./index.module.css";
-import classNames from "classnames/bind";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useWindowSize } from "../../lib/hooks";
-import { HOME_NAV_LABELS, ROUTES, WINDOW_TYPE } from "../../lib/constants";
+
+import styles from './index.module.css';
+import classNames from 'classnames/bind';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useWindowSize } from '../../lib/hooks';
+import { HOME_NAV_LABELS, ROUTES, WINDOW_TYPE } from '../../lib/constants';
 const cx = classNames.bind(styles);
 
 export const NavBar = () => {
-  const { width, type } = useWindowSize();
-  const isMobile = type === WINDOW_TYPE.MOBILE;
-  const navigate = useNavigate();
-  const { pathname } = useLocation();
-  const isSmall = width < 600 || isMobile;
+    const { width, type } = useWindowSize();
+    const isMobile = type === WINDOW_TYPE.MOBILE;
+    const navigate = useNavigate();
+    const { pathname } = useLocation();
+    const isSmall = width < 600 || isMobile;
 
-  const goTo = (route) => {
-    navigate(route);
-  };
+    const goTo = (route) => {
+        navigate(route);
+    }
 
-  console.log(isSmall);
-  return (
-    <div
-      className={cx(styles.page, {
-        [styles.mobile]: isMobile,
-      })}
+    console.log(isSmall)
+    return <div
+        className={cx(styles.page, {
+            [styles.mobile]: isMobile
+        })}
     >
-      <div className={cx(styles.navBar)}>
+        <div className={cx(styles.navBar)}>
+        
         {/* <div
         className={cx(styles.navBar, {
             [styles.small]: isSmall
         })}
         > */}
 
-        <div
-          onClick={() => goTo(ROUTES.HOME)}
-          className={cx(styles.navItem, {
-            [styles.selected]: pathname === ROUTES.HOME,
-          })}
-        >
-          {/* <span className={cx(styles.navItemLabel)}>{HOME_NAV_LABELS.HOME}</span> */}
-          {/* <span className={HOME_NAV_ICONS.HOME}></span> */}
-          <svg
-            preserveAspectRatio="xMidYMin"
-            // margin="auto"
-            width="228"
-            height="129"
-            viewBox="0 0 76 43"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M35.9735 0.691523C36.4772 0.246307 37.1304 1.61745e-05 37.8076 1.61745e-05C38.4847 1.61745e-05 39.138 0.246307 39.6417 0.691523L49.704 9.58808C49.9904 9.84138 50.2193 10.1511 50.3759 10.4972C50.5326 10.8432 50.6135 11.2179 50.6133 11.5967V24.2981C50.6133 25.0141 50.3242 25.7008 49.8095 26.2071C49.2949 26.7134 48.5968 26.9978 47.869 26.9978H27.7443C27.0165 26.9978 26.3184 26.7134 25.8038 26.2071C25.2891 25.7008 25 25.0141 25 24.2981V11.5967C25 10.8318 25.3293 10.101 25.9111 9.58808L35.9735 0.691523Z"
-              fill="#CCCCCC"
-              fill-opacity="0.5"
-            />
-            <rect
-              x="31.9225"
-              y="19.3838"
-              width="12.4605"
-              height="2.07675"
-              rx="1.03838"
-              fill="white"
-            />
-            <path
-              d="M25.719 32.242V42H24.445V37.576H19.475V42H18.201V32.242H19.475V36.526H24.445V32.242H25.719ZM31.2404 42.126C30.5217 42.126 29.8684 41.9627 29.2804 41.636C28.7017 41.3093 28.2444 40.8473 27.9084 40.25C27.5817 39.6433 27.4184 38.9433 27.4184 38.15C27.4184 37.366 27.5864 36.6753 27.9224 36.078C28.2677 35.4713 28.7344 35.0093 29.3224 34.692C29.9104 34.3653 30.5684 34.202 31.2964 34.202C32.0244 34.202 32.6824 34.3653 33.2704 34.692C33.8584 35.0093 34.3204 35.4667 34.6564 36.064C35.0017 36.6613 35.1744 37.3567 35.1744 38.15C35.1744 38.9433 34.9971 39.6433 34.6424 40.25C34.2971 40.8473 33.8257 41.3093 33.2284 41.636C32.6311 41.9627 31.9684 42.126 31.2404 42.126ZM31.2404 41.006C31.6977 41.006 32.1271 40.8987 32.5284 40.684C32.9297 40.4693 33.2517 40.1473 33.4944 39.718C33.7464 39.2887 33.8724 38.766 33.8724 38.15C33.8724 37.534 33.7511 37.0113 33.5084 36.582C33.2657 36.1527 32.9484 35.8353 32.5564 35.63C32.1644 35.4153 31.7397 35.308 31.2824 35.308C30.8157 35.308 30.3864 35.4153 29.9944 35.63C29.6117 35.8353 29.3037 36.1527 29.0704 36.582C28.8371 37.0113 28.7204 37.534 28.7204 38.15C28.7204 38.7753 28.8324 39.3027 29.0564 39.732C29.2897 40.1613 29.5977 40.4833 29.9804 40.698C30.3631 40.9033 30.7831 41.006 31.2404 41.006ZM46.0755 34.188C46.6728 34.188 47.2048 34.314 47.6715 34.566C48.1382 34.8087 48.5068 35.1773 48.7775 35.672C49.0482 36.1667 49.1835 36.7687 49.1835 37.478V42H47.9235V37.66C47.9235 36.8947 47.7322 36.3113 47.3495 35.91C46.9762 35.4993 46.4675 35.294 45.8235 35.294C45.1608 35.294 44.6335 35.5087 44.2415 35.938C43.8495 36.358 43.6535 36.9693 43.6535 37.772V42H42.3935V37.66C42.3935 36.8947 42.2022 36.3113 41.8195 35.91C41.4462 35.4993 40.9375 35.294 40.2935 35.294C39.6308 35.294 39.1035 35.5087 38.7115 35.938C38.3195 36.358 38.1235 36.9693 38.1235 37.772V42H36.8495V34.328H38.1235V35.434C38.3755 35.0327 38.7115 34.7247 39.1315 34.51C39.5608 34.2953 40.0322 34.188 40.5455 34.188C41.1895 34.188 41.7588 34.3327 42.2535 34.622C42.7482 34.9113 43.1168 35.336 43.3595 35.896C43.5742 35.3547 43.9288 34.9347 44.4235 34.636C44.9182 34.3373 45.4688 34.188 46.0755 34.188ZM58.2733 37.87C58.2733 38.1127 58.2593 38.3693 58.2313 38.64H52.0993C52.146 39.396 52.4026 39.9887 52.8693 40.418C53.3453 40.838 53.9193 41.048 54.5913 41.048C55.142 41.048 55.5993 40.922 55.9633 40.67C56.3366 40.4087 56.598 40.0633 56.7473 39.634H58.1193C57.914 40.3713 57.5033 40.9733 56.8873 41.44C56.2713 41.8973 55.506 42.126 54.5913 42.126C53.8633 42.126 53.21 41.9627 52.6313 41.636C52.062 41.3093 51.614 40.8473 51.2873 40.25C50.9606 39.6433 50.7973 38.9433 50.7973 38.15C50.7973 37.3567 50.956 36.6613 51.2733 36.064C51.5906 35.4667 52.034 35.0093 52.6033 34.692C53.182 34.3653 53.8446 34.202 54.5913 34.202C55.3193 34.202 55.9633 34.3607 56.5233 34.678C57.0833 34.9953 57.5126 35.434 57.8113 35.994C58.1193 36.5447 58.2733 37.17 58.2733 37.87ZM56.9573 37.604C56.9573 37.1187 56.85 36.7033 56.6353 36.358C56.4206 36.0033 56.1266 35.7373 55.7533 35.56C55.3893 35.3733 54.9833 35.28 54.5353 35.28C53.8913 35.28 53.3406 35.4853 52.8833 35.896C52.4353 36.3067 52.1786 36.876 52.1133 37.604H56.9573Z"
-              fill="#CCCCCC"
-            />
-          </svg>
+            <div onClick={() => goTo(ROUTES.HOME)} className={cx(styles.navItem, {
+                [styles.selected]: pathname === ROUTES.HOME
+            })}>
+                <span className={cx(styles.navItemLabel)}>{HOME_NAV_LABELS.HOME}</span>
+            </div>  
+            <div onClick={() => goTo(ROUTES.ROADMAP)} className={cx(styles.navItem, {
+                [styles.selected]: pathname === ROUTES.ROADMAP
+            })}>
+                <span className={cx(styles.navItemLabel)}>{HOME_NAV_LABELS.ROADMAP}</span>
+            </div>  
+            <div onClick={() => goTo(ROUTES.COMMUNITY)} className={cx(styles.navItem, {
+                [styles.selected]: pathname === ROUTES.COMMUNITY
+            })}>
+                <span className={cx(styles.navItemLabel)}>{HOME_NAV_LABELS.COMMUNITY}</span>
+            </div> 
         </div>
-        <div
-          onClick={() => goTo(ROUTES.ROADMAP)}
-          className={cx(styles.navItem, {
-            [styles.selected]: pathname === ROUTES.ROADMAP,
-          })}
-        >
-          <span className={cx(styles.navItemLabel)}>
-            {HOME_NAV_LABELS.ROADMAP}
-          </span>
-        </div>
-        <div
-          onClick={() => goTo(ROUTES.COMMUNITY)}
-          className={cx(styles.navItem, {
-            [styles.selected]: pathname === ROUTES.COMMUNITY,
-          })}
-        >
-          <span className={cx(styles.navItemLabel)}>
-            {HOME_NAV_LABELS.COMMUNITY}
-          </span>
-        </div>
-      </div>
     </div>
-  );
-};
+}
