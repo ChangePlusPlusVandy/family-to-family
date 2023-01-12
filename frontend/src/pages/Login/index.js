@@ -80,8 +80,6 @@ export default function Login() {
   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
 
-  //need to implement remember me feature 
-
   useEffect(() => {
     if (isLoggedIn) {
       navigate("/home");
