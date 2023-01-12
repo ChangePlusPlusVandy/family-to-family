@@ -1,67 +1,66 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../../lib/AuthContext";
+// import React, { useState } from "react";
+// import { Link, useHistory } from "react-router-dom";
+// import { useAuth } from "../../lib/AuthContext";
 
-const Login = () => {
-  const { login } = useAuth();
-  const history = useHistory();
+// export const Login = () => {
+//   const { login } = useAuth();
+//   const history = useHistory();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [isLoading, setIsLoading] = useState(false);
+//   const [error, setError] = useState("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    try {
-      await login(email, password);
-      history.push("/"); // Redirect to home page
-    } catch (error) {
-      setError(error.message);
-    }
-    setIsLoading(false);
-  };
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     setIsLoading(true);
+//     try {
+//       await login(email, password);
+//       history.push("/"); // Redirect to home page
+//     } catch (error) {
+//       setError(error.message);
+//     }
+//     setIsLoading(false);
+//   };
 
-  return (
-    <div>
-      <h1>Welcome to the React Firebase Auth template project</h1>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button disabled={isLoading} type="submit">
-          {isLoading ? "Loading..." : "Login"}
-        </button>
-        {error && <p>{error}</p>}
-      </form>
-      <p>
-        Don't have an account? <Link to="/register">Register</Link>
-      </p>
-      <p>
-        Forgot your password? <Link to="/forgot-password">Reset</Link>
-      </p>
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <h1>Welcome to the React Firebase Auth template project</h1>
+//       <h1>Login</h1>
+//       <form onSubmit={handleSubmit}>
+//         <div>
+//           <label htmlFor="email">Email</label>
+//           <input
+//             type="email"
+//             id="email"
+//             value={email}
+//             onChange={(e) => setEmail(e.target.value)}
+//           />
+//         </div>
+//         <div>
+//           <label htmlFor="password">Password</label>
+//           <input
+//             type="password"
+//             id="password"
+//             value={password}
+//             onChange={(e) => setPassword(e.target.value)}
+//           />
+//         </div>
+//         <button disabled={isLoading} type="submit">
+//           {isLoading ? "Loading..." : "Login"}
+//         </button>
+//         {error && <p>{error}</p>}
+//       </form>
+//       <p>
+//         Don't have an account? <Link to="/register">Register</Link>
+//       </p>
+//       <p>
+//         Forgot your password? <Link to="/forgot-password">Reset</Link>
+//       </p>
+//     </div>
+//   );
+// };
 
-<<<<<<< HEAD
 // export default Login;
 
 import React, { useState, useEffect } from "react";
@@ -81,7 +80,7 @@ export default function Login() {
   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
 
-  //need to implement remember me feature
+  //need to implement remember me feature 
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -207,6 +206,3 @@ export default function Login() {
     </div>
   );
 }
-=======
-export default Login;
->>>>>>> e31384c734c943e29b8bee2154411074953f5a96
