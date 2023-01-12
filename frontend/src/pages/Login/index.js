@@ -77,13 +77,25 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
+
+  //need to implement remember me feature
 
   useEffect(() => {
     if (isLoggedIn) {
       navigate("/home");
     }
   }, [isLoggedIn, navigate]);
+
+  useEffect(() => {
+    // Check if there is a rememberMeToken in the localStorage
+    const rememberMeToken = JSON.parse(localStorage.getItem("rememberMeToken"));
+    if (rememberMeToken) {
+      setRememberMe(true);
+      setEmail(rememberMeToken.email);
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -114,6 +126,14 @@ export default function Login() {
       .catch((error) => {
         setError(error.message);
       });
+    if (rememberMe) {
+      localStorage.setItem(
+        "rememberMeToken",
+        JSON.stringify({ email, token: "some-token" })
+      );
+    } else {
+      localStorage.removeItem("rememberMeToken");
+    }
     setIsLoading(false);
   };
 
@@ -150,7 +170,12 @@ export default function Login() {
         {error && <div className={cx(styles.error)}>{error}</div>}
 
         <div className={cx(styles.form_extras)}>
-          <input type="checkbox" id="rem" />
+          <input
+            type="checkbox"
+            id="rem"
+            checked={rememberMe}
+            onChange={() => setRememberMe(!rememberMe)}
+          />
           <label htmlFor="rem">Remember Me</label>
           <text className={cx(styles.form_extras, "desc")}>
             <Link
