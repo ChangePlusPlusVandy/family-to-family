@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../../lib/AuthContext";
 import { Link } from "react-router-dom";
 
-export const ForgotPassword = () => {
+const ForgotPassword = () => {
   const { forgotPassword } = useAuth();
+
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
@@ -43,3 +44,4 @@ export const ForgotPassword = () => {
   );
 };
 
+export default ForgotPassword;
